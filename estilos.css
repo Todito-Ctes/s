@@ -1,0 +1,154 @@
+/* Fuente y colores base */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #fffdfc;
+  color: #333;
+}
+
+/* Encabezado */
+header {
+  background-color: #333;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  max-width: 120px;
+  height: auto;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social a {
+  color: #f88db2;
+  font-size: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.social a:hover {
+  transform: scale(1.2);
+}
+
+/* Sección de productos */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(299px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  background-color: #c1eef8;
+}
+
+.producto {
+  position: relative;
+  background-color: #ffeef2;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.producto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.producto img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Info oculta que aparece con animación */
+.info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(34, 34, 34, 0.774);
+  padding: 15px;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.9s ease;
+}
+
+.producto:hover .info {
+  transform: translateY(0);
+}
+
+.descripcion {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.precio {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #d76d77;
+}
+
+.btn-consultar {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #d9f8ff;
+  color: #333;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-consultar i {
+  margin-left: 8px;
+  color: #25d366;
+}
+
+.btn-consultar:hover {
+  background-color: #c1eef8;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.cookies {
+  margin-bottom: 8px;
+}
+
+/* Ajustes responsivos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .productos {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .producto {
+    max-width: 100%;
+  }
+
+  .logo-social {
+    flex-direction: column;
+  }
+}
