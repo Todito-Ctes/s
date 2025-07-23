@@ -3,21 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Todito-Ctes</title>
+  <title>Todito Multirubro</title>
   <link rel="stylesheet" href="estilos.css" />
   <script defer src="script.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://kit.fontawesome.com/6430859e9d.js" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
   <header>
     <div class="logo-social">
-      <img href="https://todito-ctes.github.io/s/" src="logo.png" alt="Logo de la tienda" class="logo" />
+      <img src="logo.png" alt="Logo de la tienda" class="logo"/>
       <div class="social">
-        <a href="https://instagram.com/todito.ctes" target="_blank" rel="noopener">
+        <a href="https://instagram.com/tuusuario" target="_blank" rel="noopener">
           <i class="fab fa-instagram"></i>
         </a>
         <a href="https://maps.app.goo.gl/mH8LX9o1me4GVVxd7" target="_blank" rel="noopener">
@@ -28,6 +24,20 @@
         </a>
       </div>
     </div>
+
+    <!-- Carrito -->
+    <div class="carrito-container">
+      <div class="carrito-icono" onclick="toggleCarrito()">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="contador-carrito">0</span>
+      </div>
+      <div class="carrito-panel" id="carrito-panel">
+        <h3>Tu carrito</h3>
+        <ul id="lista-carrito"></ul>
+        <p id="total-carrito">Total: $0</p>
+        <button class="btn-consultar-carrito" onclick="enviarCarrito()">Consultar por WhatsApp</button>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -35,14 +45,13 @@
       <div class="producto">
         <img src="producto1.png" alt="Producto 1" />
         <div class="info">
-          <p class="descripcion">Producto 1 - una descripción breve y concisa.</p>
-          <p class="precio">$1.200</p>
-          <a
-            href="https://wa.me/543794284970?text=Hola,%20vengo%20de%20la%20web%20de%20Todito,%20quisiera%20comprar%20algo"
-            class="btn-consultar"
-            target="_blank"
-          >
-            <i class="fab fa-whatsapp"></i> Consultar
+          <p class="descripcion"><b>Producto</b> <br> una descripción breve y concisa.</p>
+          <p class="precio">$1200</p>
+          <a href="#" class="btn-consultar" onclick="consultarProducto('Producto 1', 1200, 'producto1.png')">
+            Consultar <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="#" class="btn-agregar" onclick="agregarAlCarrito('Producto 1', 1200, 'producto1.png')">
+            <i class="fas fa-cart-plus"></i> Agregar al carrito
           </a>
         </div>
       </div>
@@ -51,54 +60,23 @@
         <img src="producto2.png" alt="Producto 2" />
         <div class="info">
           <p class="descripcion">Producto 2 - una descripción breve y concisa.</p>
-          <p class="precio">$2.500</p>
-          <a
-            href="https://wa.me/543794284970?text=Hola,%20vengo%20de%20la%20web%20de%20Todito,%20quisiera%20comprar%20algo"
-            class="btn-consultar"
-            target="_blank"
-          >
-            <i class="fab fa-whatsapp"></i> Consultar
+          <p class="precio">$2500</p>
+          <a href="#" class="btn-consultar" onclick="consultarProducto('Producto 2', 2500, 'producto2.png')">
+            Consultar <i class="fab fa-whatsapp"></i>
           </a>
-        </div>
-      </div>
-      
-      <div class="producto">
-        <img src="producto2.png" alt="Producto 2" />
-        <div class="info">
-          <p class="descripcion">Producto 2 - una descripción breve y concisa.</p>
-          <p class="precio">$2.500</p>
-          <a
-            href="https://wa.me/543794284970?text=Hola,%20vengo%20de%20la%20web%20de%20Todito,%20quisiera%20comprar%20algo"
-            class="btn-consultar"
-            target="_blank"
-          >
-            <i class="fab fa-whatsapp"></i> Consultar 
+          <a href="#" class="btn-agregar" onclick="agregarAlCarrito('Producto 2', 2500, 'producto2.png')">
+            <i class="fas fa-cart-plus"></i> Agregar al carrito
           </a>
         </div>
       </div>
 
-      <div class="producto">
-        <img src="producto2.png" alt="Producto 2" />
-        <div class="info">
-          <p class="descripcion"><b>PRODUCTO</b><br> descripción breve y concisa.</p>
-          <p class="precio">$2.500</p>
-          <a
-            href="https://wa.me/543794284970?text=Hola,%20vengo%20de%20la%20web%20de%20Todito,%20quisiera%20comprar%20algo"
-            class="btn-consultar"
-            target="_blank"
-          >
-            <i class="fab fa-whatsapp"></i> Consultar
-          </a>
-        </div>
-      </div>
-
-      <!-- Agrega más productos aquí -->
+      <!-- Más productos aquí... -->
     </section>
   </main>
 
   <footer>
     <div class="cookies">Este sitio utiliza cookies para mejorar la experiencia del usuario.</div>
-    <div class="derechos">&copy; 2025 TODITO MULTIRUBRO. Todos los derechos reservados.</div>
+    <div class="derechos">&copy; 2025 Tienda Minimalista. Todos los derechos reservados.</div>
   </footer>
 </body>
 </html>

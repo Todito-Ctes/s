@@ -17,11 +17,11 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 }
 
 .logo {
-  max-width: 150px;
+  max-width: 120px;
   height: auto;
 }
 
@@ -58,7 +58,6 @@ header {
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-
   max-width: 320px;
   margin: 0 auto;
 }
@@ -100,10 +99,12 @@ header {
 .precio {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #d76d77;
+  color: #f88db2;
 }
 
-.btn-consultar {
+/* Botones */
+.btn-consultar,
+.btn-agregar {
   display: inline-block;
   margin-top: 10px;
   padding: 10px 16px;
@@ -113,6 +114,7 @@ header {
   text-decoration: none;
   font-weight: 500;
   transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .btn-consultar i {
@@ -120,7 +122,12 @@ header {
   color: #25d366;
 }
 
-.btn-consultar:hover {
+.btn-agregar i {
+  margin-right: 8px;
+}
+
+.btn-consultar:hover,
+.btn-agregar:hover {
   background-color: #c1eef8;
 }
 
@@ -151,4 +158,207 @@ footer {
   .logo-social {
     flex-direction: column;
   }
+}
+
+/* Carrito - contenedor fijo */
+.carrito-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* Ícono carrito */
+.carrito-icono {
+  position: relative;
+  background: #c1eef8;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  color: #f88db2;
+  transition: transform 0.3s ease;
+}
+
+#contador-carrito {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #f88db2;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* Animación del carrito al pasar el mouse */
+.carrito-icono:hover {
+  animation: rebote 0.4s ease;
+}
+
+@keyframes rebote {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Panel carrito */
+.carrito-panel {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 320px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  padding: 15px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  display: none;
+}
+
+.carrito-panel.abierto {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  display: block;
+}
+
+.carrito-panel h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+/* Lista de productos en carrito como cuadros */
+#lista-carrito {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#lista-carrito li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  background: #ffeef2;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* Globito de cantidad sobre cada producto */
+.cantidad-globito {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background: #f88db2;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  user-select: none;
+}
+
+/* Imagen producto carrito */
+.img-carrito {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.detalle-carrito {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.detalle-carrito span {
+  display: block;
+  margin: 2px 0;
+  font-weight: 600;
+}
+
+/* Botón eliminar (×) pequeño en esquina */
+#lista-carrito li button.btn-eliminar {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  background: none;
+  border: none;
+  color: #f88db2;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* Botones + y - para cantidad en el carrito */
+.cantidad-control {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.cantidad-control button {
+  background-color: #f88db2;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.cantidad-control button:hover {
+  background-color: #f784ac;
+}
+
+#total-carrito {
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.carrito-panel button.btn-consultar-carrito {
+  background-color: #25d366;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.carrito-panel button.btn-consultar-carrito:hover {
+  background-color: #1ebe5d;
+}
+
+/* Animación vibrar para botón consultar carrito */
+.vibrar {
+  animation: vibrar 0.4s ease;
+}
+
+@keyframes vibrar {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
 }
