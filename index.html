@@ -10,29 +10,46 @@
   <script defer src="script.js"></script>
 </head>
 <body>
-
-  <!-- Encabezado -->
   <header>
-    <h1>Todito Multirubro</h1>
+    <div class="logo-social">
+      <img src="logo.png" alt="Logo de la tienda" class="logo"/>
+      <div class="social">
+        <a href="https://instagram.com/tuusuario" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://maps.app.goo.gl/mH8LX9o1me4GVVxd7" target="_blank" rel="noopener">
+          <i class="fa-solid fa-location-dot"></i>
+        </a>
+        <a href="https://facebook.com/tuusuario" target="_blank" rel="noopener">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Carrito -->
+    <div class="carrito-container">
+      <div class="carrito-icono" onclick="toggleCarrito()">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="contador-carrito">0</span>
+      </div>
+      <div class="carrito-panel" id="carrito-panel">
+        <h3>Tu carrito</h3>
+        <ul id="lista-carrito"></ul>
+        <p id="total-carrito">Total: $0</p>
+        <button class="btn-consultar-carrito" onclick="enviarCarrito()">Consultar por WhatsApp</button>
+      </div>
+    </div>
   </header>
 
-  <!-- Contenedor de productos -->
-  <section class="productos" id="productos-contenedor">
-    Cargando productos...
-  </section>
+  <main>
+    <section class="productos">
+      <!-- Los productos se cargarán dinámicamente aquí -->
+    </section>
+  </main>
 
-  <!-- Carrito lateral -->
-  <div id="carrito-panel">
-    <h2>Tu Carrito</h2>
-    <ul id="lista-carrito"></ul>
-    <p id="total-carrito">Total: $0</p>
-    <button class="btn-consultar-carrito" onclick="enviarCarrito()">Consultar por WhatsApp</button>
-  </div>
-
-  <!-- Botón flotante para carrito -->
-  <div class="boton-carrito" onclick="toggleCarrito()">
-    🛒 <span id="contador-carrito">0</span>
-  </div>
-
+  <footer>
+    <div class="cookies">Este sitio utiliza cookies para mejorar la experiencia del usuario.</div>
+    <div class="derechos">&copy; 2025 Tienda Minimalista. Todos los derechos reservados.</div>
+  </footer>
 </body>
 </html>
