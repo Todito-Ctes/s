@@ -1,7 +1,7 @@
 // --- INICIALIZACIÓN SUPABASE ---
 const supabaseUrl = 'https://dzbgomlfxwutejxtzbaz.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6YmdvbWxmeHd1dGVqeHR6YmF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMzNzg1NzgsImV4cCI6MjA2ODk1NDU3OH0.6foIQEbpA4gIYCK2hB4mxd2Bi2FckXqJz40C6yiY_AE';
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 // --- CARRITO ---
 let carrito = [];
@@ -25,7 +25,7 @@ async function cargarProductos() {
     return;
   }
 
-  const contenedor = document.querySelector('.productos');
+  const contenedor = document.getElementById('productos-contenedor');
   contenedor.innerHTML = '';
 
   data.forEach(producto => {
@@ -143,7 +143,7 @@ function enviarCarrito() {
     return;
   }
 
-  const numero = "543794284970"; // Cambiar por tu número real
+  const numero = "543794284970";
   let mensaje = "¡Hola! Estoy interesado en estos productos:\n\n";
 
   carrito.forEach((item, i) => {
