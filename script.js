@@ -1,6 +1,54 @@
+// --- INICIALIZACIÓN SUPABASE ---
+const supabaseUrl = 'https://dzbgomlfxwutejxtzbaz.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6YmdvbWxmeHd1dGVqeHR6YmF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMzNzg1NzgsImV4cCI6MjA2ODk1NDU3OH0.6foIQEbpA4gIYCK2hB4mxd2Bi2FckXqJz40C6yiY_AE';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+// --- CARRITO ---
 let carrito = [];
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  await cargarProductos();
+  iniciarAnimaciones();
+  actualizarCarrito();
+});
+
+// --- FUNCIONES ---
+
+async function cargarProductos() {
+  const { data, error } = await supabase
+    .from('productos')
+    .select('*')
+    .order('nombre', { ascending: true });
+
+  if (error) {
+    console.error('Error al cargar productos:', error);
+    return;
+  }
+
+  const contenedor = document.querySelector('.productos');
+  contenedor.innerHTML = '';
+
+  data.forEach(producto => {
+    const div = document.createElement('div');
+    div.className = 'producto';
+    div.innerHTML = `
+      <img src="${producto.imagen_url}" alt="${producto.nombre}" />
+      <div class="info">
+        <p class="descripcion"><b>${producto.nombre}</b> <br>${producto.descripcion}</p>
+        <p class="precio">$${producto.precio}</p>
+        <a href="#" class="btn-consultar" onclick="consultarProducto('${producto.nombre}', ${producto.precio}, '${producto.imagen_url}')">
+          Consultar <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#" class="btn-agregar" onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio}, '${producto.imagen_url}')">
+          <i class="fas fa-cart-plus"></i> Agregar al carrito
+        </a>
+      </div>
+    `;
+    contenedor.appendChild(div);
+  });
+}
+
+function iniciarAnimaciones() {
   const productos = document.querySelectorAll(".producto");
   productos.forEach((producto, i) => {
     producto.style.opacity = 0;
@@ -11,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       producto.style.transform = "translateY(0)";
     }, i * 150);
   });
-});
+}
 
 function agregarAlCarrito(nombre, precio, img) {
   const productoExistente = carrito.find(item => item.nombre === nombre);
