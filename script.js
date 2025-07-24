@@ -1,5 +1,5 @@
 const supabaseUrl = 'https://dzbgomlfxwutejxtzbaz.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'; // Usa aquí tu propia key pública si la cambias
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6YmdvbWxmeHd1dGVqeHR6YmF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMzNzg1NzgsImV4cCI6MjA2ODk1NDU3OH0.6foIQEbpA4gIYCK2hB4mxd2Bi2FckXqJz40C6yiY_AE'; // Usa aquí tu propia key pública si la cambias
 let supabase;
 
 document.addEventListener('DOMContentLoaded', async () => {
