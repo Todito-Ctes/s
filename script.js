@@ -1,18 +1,15 @@
-// --- INICIALIZACIÓN SUPABASE ---
 const supabaseUrl = 'https://dzbgomlfxwutejxtzbaz.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6YmdvbWxmeHd1dGVqeHR6YmF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMzNzg1NzgsImV4cCI6MjA2ODk1NDU3OH0.6foIQEbpA4gIYCK2hB4mxd2Bi2FckXqJz40C6yiY_AE';
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
-// --- CARRITO ---
-let carrito = [];
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'; // Usa aquí tu propia key pública si la cambias
+let supabase;
 
 document.addEventListener('DOMContentLoaded', async () => {
+  supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
   await cargarProductos();
   iniciarAnimaciones();
   actualizarCarrito();
 });
 
-// --- FUNCIONES ---
+let carrito = [];
 
 async function cargarProductos() {
   const { data, error } = await supabase
@@ -25,7 +22,7 @@ async function cargarProductos() {
     return;
   }
 
-  const contenedor = document.getElementById('productos-contenedor');
+  const contenedor = document.querySelector('.productos');
   contenedor.innerHTML = '';
 
   data.forEach(producto => {
@@ -143,7 +140,7 @@ function enviarCarrito() {
     return;
   }
 
-  const numero = "543794284970";
+  const numero = "543794284970"; // Cambiar por tu número real
   let mensaje = "¡Hola! Estoy interesado en estos productos:\n\n";
 
   carrito.forEach((item, i) => {
